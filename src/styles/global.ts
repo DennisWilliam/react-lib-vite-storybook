@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import GlobalProps from "./types";
+import { createGlobalStyle } from 'styled-components'
+import GlobalProps from './types'
 
 export default createGlobalStyle<GlobalProps>`
    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700&display=swap');
@@ -60,4 +60,4 @@ export default createGlobalStyle<GlobalProps>`
 	 }
 
 	 
-`;
+`

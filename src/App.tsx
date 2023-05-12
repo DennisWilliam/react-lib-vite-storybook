@@ -1,7 +1,12 @@
 import { ThemeContext } from '@themes/contexts'
 import { ThemeContextProps } from '@themes/contexts/types'
 import { useContext } from 'react'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import {
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+	RouterProvider,
+} from 'react-router-dom'
 
 import Global from './styles/global'
 
@@ -11,13 +16,13 @@ const Page = () => {
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path='/' element={<Page />} >
-			<Route index path='/base-page-story' element={<Page />} />
+		<Route path="/" element={<Page />}>
+			<Route index path="/base-page-story" element={<Page />} />
 		</Route>
 	)
 )
 
-function App() {
+const App = () => {
 	const { theme } = useContext<ThemeContextProps>(ThemeContext)
 	return (
 		<>

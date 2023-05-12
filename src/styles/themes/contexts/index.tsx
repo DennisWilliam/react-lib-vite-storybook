@@ -1,22 +1,17 @@
 import { ThemeApp } from '@themes/theme'
 import { createContext, useState } from 'react'
 import { CommonsTheme, DarkTheme } from '..'
-import {
-	ThemeContextProps,
-	ThemeContextProviderProps,
-	ThemeProps
-} from './types'
+import { ThemeContextProps, ThemeContextProviderProps, ThemeProps } from './types'
 
 export const ThemeContext = createContext<ThemeContextProps>({
 	theme: CommonsTheme,
-	toggleTheme: () => { },
+	toggleTheme: () => null,
 })
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
 	const [theme, setTheme] = useState<ThemeApp>(CommonsTheme)
 
 	const toggleTheme = (newTheme: ThemeProps) => {
-
 		switch (newTheme) {
 			case 'Commons':
 				return setTheme(CommonsTheme)
@@ -27,11 +22,7 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
 		}
 	}
 
-	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			{children}
-		</ThemeContext.Provider>
-	)
+	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
 
 export default ThemeContextProvider

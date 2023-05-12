@@ -5,7 +5,7 @@ extends:
   - plugin:react-hooks/recommended
   - plugin:import/recommended
   - plugin:import/typescript
-parser: "@typescript-eslint/parser"
+parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -18,77 +18,114 @@ env:
 settings:
   react:
     version: detect
+  import/parsers:
+    '@typescript-eslint/parser':
+      - .ts
+      - .tsx
+  import/resolver:
+    typescript:
+      alwaysTryTypes: true
+      project:
+        - tsconfig.json
+    node:
+      extensions:
+        - .ts
+        - .tsx
+      moduleDirectory:
+        - src
+        - node_modules
 rules:
+  import/no-unresolved:
+    - 2
+    - ignore:
+        - '.svg$'
+        - '.img$'
+        - '.png$'
   no-use-before-define: warn
-  "@typescript-eslint/no-explicit-any": warn
-  "@typescript-eslint/explicit-module-boundary-types": off
+  '@typescript-eslint/no-explicit-any': warn
+  '@typescript-eslint/explicit-module-boundary-types': off
   indent:
-  - error
-  - tab
-  - SwitchCase: 1
+    - error
+    - tab
+    - SwitchCase: 1
   linebreak-style:
-  - error
-  - windows
+    - error
+    - windows
   quotes:
-  - error
-  - single
+    - error
+    - single
   semi:
-  - error
-  - never
+    - error
+    - never
   no-trailing-spaces: error
   space-infix-ops: error
-  no-unused-vars: warn # TODO error
+  no-unused-vars:
+    - error
+    - args: none
   object-curly-spacing:
-  - error
-  - always
-  - arraysInObjects: false
-    objectsInObjects: false
+    - error
+    - always
+    - arraysInObjects: false
+      objectsInObjects: false
   array-bracket-spacing:
-  - error
-  - never
+    - error
+    - never
   arrow-spacing:
-  - error
-  - before: true
-    after: true
+    - error
+    - before: true
+      after: true
   block-spacing:
-  - error
-  - always
+    - error
+    - always
   computed-property-spacing:
-  - error
-  - never
+    - error
+    - never
   comma-spacing:
-  - error
-  - before: false
-    after: true
+    - error
+    - before: false
+      after: true
   keyword-spacing:
-  - error
-  - before: true
-    after: true
-    overrides:
-      case:
-        after: false
+    - error
+    - before: true
+      after: true
+      overrides:
+        case:
+          after: true
+
   space-before-function-paren:
-  - error
-  - anonymous: never
-    named: never
-    asyncArrow: always
+    - error
+    - anonymous: never
+      named: never
+      asyncArrow: always
+  no-console: error
   no-multi-spaces:
-  - error
-  - ignoreEOLComments: true
-  # - Property: true # TODO: Habilitar qdo atualizar o eslint
+    - error
+    - ignoreEOLComments: true
   eol-last:
-  - error
-  - always
+    - error
+    - always
   no-unused-expressions:
-  - off #TODO: error; Necessário estar off até a atualização do eslint
-  - allowShortCircuit: true
-    allowTernary: true
+    - error
+    - allowShortCircuit: true
+      allowTernary: true
   array-callback-return:
-  - warn #TODO: error
-  - allowImplicit: true
-    # checkForEach: true #TODO: Habilitar qdo atualizar o eslint
-  consistent-return: warn #TODO: error
-  no-return-await: warn #TODO: error
-  no-useless-return: warn #TODO: error
-  react/hook-use-state: warn
-  react/prop-types: off # TODO: Habilitar qdo atualizar o eslint?
+    - error
+    - allowImplicit: true
+  consistent-return: error
+  no-return-await: error
+  no-useless-return: error
+  react/hook-use-state: error
+  react/prop-types: off
+  react/react-in-jsx-scope: off
+  react/jsx-filename-extension:
+    - 1
+    - extensions:
+        - '.tsx'
+  react/jsx-props-no-spreading: off
+  react/require-default-props: off
+  import/extensions: off
+  import/no-extraneous-dependencies: off
+  react/function-component-definition:
+    - 2
+    - namedComponents: arrow-function
+      unnamedComponents: function-expression
