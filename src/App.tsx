@@ -11,7 +11,7 @@ import {
 import Global from './styles/global'
 
 const Page = () => {
-	return <div>teste</div>
+	return <div>teste2</div>
 }
 
 const router = createBrowserRouter(
